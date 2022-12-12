@@ -17,9 +17,38 @@ const sunset = document.getElementById('sunset');
 const searchBtn = document.getElementById('searchBtn');
 const searchInput = document.getElementById('searchInput');
 
+// for setting recent searches
+let searches = [];
+let index = -1;
+const first = document.getElementById('firstItem');
+const second = document.getElementById('secondItem');
+const third = document.getElementById('thirdItem');
+
+first.addEventListener('click', function () {
+  const name = first.innerHTML;
+  name && getWeather(name);
+})
+second.addEventListener('click', function () {
+  const name = second.innerHTML;
+  name && getWeather(name);
+  searches.push(name);
+  localStorage.setItem('searches', JSON.stringify(searches));
+  displayRecentSearches();
+})
+third.addEventListener('click', function () {
+  const name = third.innerHTML;
+  name && getWeather(name);
+  searches.push(name);
+  localStorage.setItem('searches', JSON.stringify(searches));
+  displayRecentSearches();
+})
 searchBtn.addEventListener('click' , (e) => {
     e.preventDefault();
+    index++;
     const cityName = searchInput.value;
+    searches[index] = cityName;
+    localStorage.setItem('searches', JSON.stringify(searches));
+    displayRecentSearches();
     getWeather(cityName);
 })
 
@@ -64,6 +93,24 @@ const getWeather = (city) => {
 }
 
 getWeather('Dhaka');
+
+function displayRecentSearches () {
+  dropdown = true;
+  const recentSearches = JSON.parse(localStorage.getItem('searches'));
+  if(recentSearches.length) {
+    let lengthOfRecentSearches  = recentSearches.length;
+    if(lengthOfRecentSearches >= 1) {
+            first.innerHTML = recentSearches[lengthOfRecentSearches - 1];
+            if(lengthOfRecentSearches >= 2) {
+                    second.innerHTML = recentSearches[lengthOfRecentSearches - 2];
+                    if(lengthOfRecentSearches >= 3) {
+                            third.innerHTML = recentSearches[lengthOfRecentSearches - 3];
+                    }
+            }
+    }
+
+  }
+}
 
 
 
@@ -242,3 +289,7 @@ function rajshahi_info () {
         .catch((err) => console.error(err));
 
 }
+
+
+
+
