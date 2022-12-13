@@ -134,13 +134,12 @@ svg circle:nth-child(2) {
   padding: 10px;
   text-align: center;
   width: 200px;
-  padding: 15px 10px;
+  padding: 10px 10px;
   border-radius: 5px;
   display: block;
   animation-timing-function: ease;
   animation-duration: 0.8s;
   animation-name: forError;
-  animation-delay: 0.2s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
@@ -150,7 +149,7 @@ svg circle:nth-child(2) {
     transform: translateY(1%);
   }
   100% {
-    transform: translateY(107%);
+    transform: translateY(142%);
   }
 }
 /* End send Error */
