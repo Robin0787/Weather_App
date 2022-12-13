@@ -18,6 +18,7 @@ const searchBtn = document.getElementById('searchBtn');
 const searchInput = document.getElementById('searchInput');
 
 // for setting recent searches
+
 let searches = [];
 let index = -1;
 const first = document.getElementById('firstItem');
@@ -28,6 +29,7 @@ first.addEventListener('click', function () {
   const name = first.innerHTML;
   name && getWeather(name);
 })
+
 second.addEventListener('click', function () {
   const name = second.innerHTML;
   name && getWeather(name);
@@ -35,6 +37,7 @@ second.addEventListener('click', function () {
   localStorage.setItem('searches', JSON.stringify(searches));
   displayRecentSearches();
 })
+
 third.addEventListener('click', function () {
   const name = third.innerHTML;
   name && getWeather(name);
@@ -42,6 +45,7 @@ third.addEventListener('click', function () {
   localStorage.setItem('searches', JSON.stringify(searches));
   displayRecentSearches();
 })
+
 searchBtn.addEventListener('click' , (e) => {
     e.preventDefault();
     index++;
@@ -49,7 +53,9 @@ searchBtn.addEventListener('click' , (e) => {
     searches[index] = cityName;
     localStorage.setItem('searches', JSON.stringify(searches));
     displayRecentSearches();
-    getWeather(cityName);
+    console.log(!!cityName);
+    cityName && getWeather(cityName);
+    searchInput.value = '';
 })
 
 const getWeather = (city) => {
@@ -68,8 +74,9 @@ const getWeather = (city) => {
       )
         .then((response) => response.json())
         .then((response) => {
-          
           console.log(response);
+
+          if(response.temp) {
           cloud_pct.innerHTML = response.cloud_pct
           temp.innerHTML = response.temp
           temp2.innerHTML = response.temp
@@ -81,18 +88,59 @@ const getWeather = (city) => {
           wind_speed.innerHTML = response.wind_speed
           wind_speed2.innerHTML = response.wind_speed
           sunrise.innerHTML = response.sunrise
-          sunset.innerHTML = response.sunset
+          sunset.innerHTML = response.sunset;
+          const forCSS = response;
+
+          calculatePercentageInCSSCard(forCSS.temp, forCSS.humidity, forCSS.wind_speed);
+
+          }else {
+            // Showing error
+            const sendError = document.querySelector('.sendError');
+            sendError.classList.add('sendError2');
+            console.log(sendError);
+            setTimeout(() => {
+              sendError.classList.remove('sendError2');
+            }, 1100);
+
+
+            cloud_pct.innerHTML = '';
+            temp.innerHTML = '';
+            temp2.innerHTML = '';
+            feels_like.innerHTML = '';
+            humidity.innerHTML = '';
+            humidity2.innerHTML = '';
+            min_temp.innerHTML = '';
+            max_temp.innerHTML = '';
+            wind_speed.innerHTML = '';
+            wind_speed2.innerHTML = '';
+            sunrise.innerHTML = '';
+            sunset.innerHTML = '';
+
+            calculatePercentageInCSSCard(0,0,0);
+          }
         //   wind_degrees.innerHTML = response.wind_degrees
 
-        dhaka_info();
-        chittagong_info();
-        brahmanbaria_info();
-        rajshahi_info();
         })
         .catch((err) => console.error(err));
 }
 
 getWeather('Dhaka');
+dhaka_info();
+chittagong_info();
+brahmanbaria_info();
+rajshahi_info();
+
+
+// for calculate percentage in css
+
+function calculatePercentageInCSSCard (temp, humidity, wind) {
+  const root = document.querySelector(':root');
+  root.style.setProperty('--temp', temp);
+  root.style.setProperty('--humidity', humidity);
+  root.style.setProperty('--wind', wind);
+}
+
+
 
 function displayRecentSearches () {
   dropdown = true;
@@ -108,7 +156,6 @@ function displayRecentSearches () {
                     }
             }
     }
-
   }
 }
 
@@ -289,7 +336,3 @@ function rajshahi_info () {
         .catch((err) => console.error(err));
 
 }
-
-
-
-
