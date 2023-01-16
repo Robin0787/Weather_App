@@ -55,7 +55,6 @@ searchBtn.addEventListener('click' , (e) => {
     displayRecentSearches();
     console.log(!!cityName);
     cityName && getWeather(cityName);
-    searchInput.value = '';
 })
 
 const getWeather = (city) => {
@@ -77,20 +76,21 @@ const getWeather = (city) => {
           console.log(response);
 
           if(response.temp) {
-          cloud_pct.innerHTML = response.cloud_pct
-          temp.innerHTML = response.temp
-          temp2.innerHTML = response.temp
-          feels_like.innerHTML = response.feels_like
+          cloud_pct.innerHTML = response.cloud_pct + ' Deg'
+          temp.innerHTML = response.temp 
+          temp2.innerHTML = response.temp + ' ℃';
+          feels_like.innerHTML = response.feels_like + " ℃";
           humidity.innerHTML = response.humidity
-          humidity2.innerHTML = response.humidity
-          min_temp.innerHTML = response.min_temp
-          max_temp.innerHTML = response.max_temp
+          humidity2.innerHTML = response.humidity + " %";
+          min_temp.innerHTML = response.min_temp + ' ℃';
+          max_temp.innerHTML = response.max_temp + ' ℃';
           wind_speed.innerHTML = response.wind_speed
-          wind_speed2.innerHTML = response.wind_speed
-          sunrise.innerHTML = response.sunrise
-          sunset.innerHTML = response.sunset;
-          const forCSS = response;
+          wind_speed2.innerHTML = response.wind_speed + " Km/hr";
+          sunrise.innerHTML = response.sunrise + " S"
+          sunset.innerHTML = response.sunset + " S";
 
+          searchInput.value = '';
+          const forCSS = response;
           calculatePercentageInCSSCard(forCSS.temp, forCSS.humidity, forCSS.wind_speed);
 
           }else {
@@ -101,8 +101,6 @@ const getWeather = (city) => {
             setTimeout(() => {
               sendError.classList.remove('sendError2');
             }, 1100);
-
-
             cloud_pct.innerHTML = '';
             temp.innerHTML = '';
             temp2.innerHTML = '';
@@ -125,7 +123,7 @@ const getWeather = (city) => {
 }
 
 getWeather('Dhaka');
-dhaka_info();
+khulna_info();
 chittagong_info();
 brahmanbaria_info();
 rajshahi_info();
@@ -161,17 +159,17 @@ function displayRecentSearches () {
 
 
 
-function dhaka_info () {
-    const dhaka_cloud_pct = document.getElementById('dhaka_cloud_pct');
-    const dhaka_temp = document.getElementById('dhaka_temp');
-    const dhaka_feels_like = document.getElementById('dhaka_feels_like');
-    const dhaka_humidity = document.getElementById('dhaka_humidity');
-    const dhaka_min_temp = document.getElementById('dhaka_min_temp');
-    const dhaka_max_temp = document.getElementById('dhaka_max_temp');
-    const dhaka_wind_speed = document.getElementById('dhaka_wind_speed');
-    const dhaka_wind_degrees = document.getElementById('dhaka_wind_degrees');
-    const dhaka_sunrise = document.getElementById('dhaka_sunrise');
-    const dhaka_sunset = document.getElementById('dhaka_sunset');
+function khulna_info () {
+    const khulna_cloud_pct = document.getElementById('khulna_cloud_pct');
+    const khulna_temp = document.getElementById('khulna_temp');
+    const khulna_feels_like = document.getElementById('khulna_feels_like');
+    const khulna_humidity = document.getElementById('khulna_humidity');
+    const khulna_min_temp = document.getElementById('khulna_min_temp');
+    const khulna_max_temp = document.getElementById('khulna_max_temp');
+    const khulna_wind_speed = document.getElementById('khulna_wind_speed');
+    const khulna_wind_degrees = document.getElementById('khulna_wind_degrees');
+    const khulna_sunrise = document.getElementById('khulna_sunrise');
+    const khulna_sunset = document.getElementById('khulna_sunset');
 
 
     const options = {
@@ -183,22 +181,22 @@ function dhaka_info () {
       };
       
       fetch(
-        `https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=dhaka`,
+        `https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=khulna`,
         options
       )
         .then((response) => response.json())
         .then((response) => {
 
-            dhaka_cloud_pct.innerHTML = response.cloud_pct;
-            dhaka_temp.innerHTML = response.temp;
-            dhaka_feels_like.innerHTML = response.feels_like;
-            dhaka_humidity.innerHTML = response.humidity;
-            dhaka_min_temp.innerHTML = response.min_temp;
-            dhaka_max_temp.innerHTML = response.max_temp;
-            dhaka_wind_speed.innerHTML = response.wind_speed;
-            dhaka_wind_degrees.innerHTML = response.wind_degrees;
-            dhaka_sunrise.innerHTML = response.sunrise;
-            dhaka_sunset.innerHTML = response.sunset;
+            khulna_cloud_pct.innerHTML = response.cloud_pct;
+            khulna_temp.innerHTML = response.temp;
+            khulna_feels_like.innerHTML = response.feels_like;
+            khulna_humidity.innerHTML = response.humidity;
+            khulna_min_temp.innerHTML = response.min_temp;
+            khulna_max_temp.innerHTML = response.max_temp;
+            khulna_wind_speed.innerHTML = response.wind_speed;
+            khulna_wind_degrees.innerHTML = response.wind_degrees;
+            khulna_sunrise.innerHTML = response.sunrise;
+            khulna_sunset.innerHTML = response.sunset;
 
         })
         .catch((err) => console.error(err));

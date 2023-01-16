@@ -66,7 +66,6 @@
                   <li>
                     <a id="secondItem" class="dropdown-item" href="#"></a>
                   </li>
-                  <!-- <li><hr class="dropdown-divider" /></li> -->
                   <li>
                     <a id="thirdItem" class="dropdown-item" href="#"></a>
                   </li>
@@ -98,7 +97,7 @@
       <!---------------- this is main part---------this is main part -------- this is main part ------------this is main part--------------- -->
       <!---------------- this is main part---------this is main part -------- this is main part ------------this is main part--------------- -->
       <!---------------- this is main part---------this is main part -------- this is main part ------------this is main part--------------- -->
-      <div class="container">
+      <div class="container text-center">
         <div class="pt-5 text-center">
           <p class="sendError">Invalid Value!</p>
           <h2 id="weatherforCity" class="text-center weatherForCity">
@@ -131,10 +130,12 @@
                         Temperature is <span id="temp2"></span>
                       </li>
                       <li class="footer-info">
-                        Max temperature is <span id="max_temp"></span>
+                        Max temperature is
+                        <span id="max_temp"></span>
                       </li>
                       <li class="footer-info">
-                        Min temperature is <span id="min_temp"></span>
+                        Min temperature is
+                        <span id="min_temp"></span>
                       </li>
                     </ul>
                   </div>
@@ -165,7 +166,8 @@
                         Cloud PCT is <span id="cloud_pct"></span>
                       </li>
                       <li class="footer-info">
-                        Feels Like is <span id="feels_like"></span>
+                        Feels Like is
+                        <span id="feels_like"></span>
                       </li>
                     </ul>
                   </div>
@@ -194,13 +196,14 @@
                   <div class="footer">
                     <ul class="list-unstyled mt-3 mb-4">
                       <li class="footer-info">
-                        Wind Speed is <span id="wind_speed2"></span>
+                        Wind Speed is
+                        <span id="wind_speed2"></span>
                       </li>
                       <li class="footer-info">
-                        Sunrise Time is <span id="sunrise"></span>
+                        Sunrise at <span id="sunrise"></span>
                       </li>
                       <li class="footer-info">
-                        Sunset Time is <span id="sunset"></span>
+                        Sunset at <span id="sunset"></span>
                       </li>
                       <!-- <li>Wind Degrees is <span id="wind_degrees"></span></li> -->
                     </ul>
@@ -210,44 +213,53 @@
             </div>
           </div>
 
-          <h2 class="display-6 text-center mb-4 weatherOfOtherCommonPlaces">
+          <h2
+            id="otherTemp"
+            class="display-6 text-center mb-4 weatherOfOtherCommonPlaces"
+          >
             Weather of other common places
           </h2>
 
           <div class="table-responsive">
             <table class="table text-center">
-              <thead>
+              <thead class="">
                 <tr>
                   <th style="width: 34%"></th>
                   <th style="width: 22%">Temp</th>
-                  <th style="width: 22%">Cloud_pct</th>
-                  <th style="width: 22%">Feels_like</th>
+                  <th style="width: 22%">Cloud_Pct</th>
+                  <th style="width: 22%">Feels_Like</th>
                   <th style="width: 22%">Humidity</th>
-                  <th style="width: 22%">Max_temp</th>
-                  <th style="width: 22%">Min_temp</th>
+                  <th style="width: 22%">Max_Temp</th>
+                  <th style="width: 22%">Min_Temp</th>
                   <th style="width: 22%">Sunrise</th>
                   <th style="width: 22%">Sunset</th>
-                  <th style="width: 22%">Wind_degrees</th>
-                  <th style="width: 22%">Wind_speed</th>
+                  <th style="width: 22%">Wind_Degrees</th>
+                  <th style="width: 22%">Wind_Speed</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row" class="text-start" id="dhaka_info">Dhaka</th>
-                  <td id="dhaka_temp"></td>
-                  <td id="dhaka_cloud_pct"></td>
-                  <td id="dhaka_feels_like"></td>
-                  <td id="dhaka_humidity"></td>
-                  <td id="dhaka_max_temp"></td>
-                  <td id="dhaka_min_temp"></td>
-                  <td id="dhaka_sunrise"></td>
-                  <td id="dhaka_sunset"></td>
-                  <td id="dhaka_wind_degrees"></td>
-                  <td id="dhaka_wind_speed"></td>
+                  <th
+                    scope="row"
+                    class="text-=console.error(object); text-start"
+                    id="Khulna_info"
+                  >
+                    <span style="margin-left: 10px">Khulna</span>
+                  </th>
+                  <td id="khulna_temp"></td>
+                  <td id="khulna_cloud_pct"></td>
+                  <td id="khulna_feels_like"></td>
+                  <td id="khulna_humidity"></td>
+                  <td id="khulna_max_temp"></td>
+                  <td id="khulna_min_temp"></td>
+                  <td id="khulna_sunrise"></td>
+                  <td id="khulna_sunset"></td>
+                  <td id="khulna_wind_degrees"></td>
+                  <td id="khulna_wind_speed"></td>
                 </tr>
                 <tr>
                   <th scope="row" class="text-start" id="chittagong_info">
-                    Chittagong
+                    <span style="margin-left: 10px">Chittagong</span>
                   </th>
                   <td id="chittagong_temp"></td>
                   <td id="chittagong_cloud_pct"></td>
@@ -263,7 +275,7 @@
 
                 <tr>
                   <th scope="row" class="text-start" id="brahmanbaria_info">
-                    Brahmanbaria
+                    <span style="margin-left: 10px">Brahmanbaria</span>
                   </th>
                   <td id="brahmanbaria_temp"></td>
                   <td id="brahmanbaria_cloud_pct"></td>
@@ -277,7 +289,9 @@
                   <td id="brahmanbaria_wind_speed"></td>
                 </tr>
                 <tr>
-                  <th scope="row" class="text-start">Rajshahi</th>
+                  <th scope="row" class="text-start">
+                    <span style="margin-left: 10px">Rajshahi</span>
+                  </th>
                   <td id="rajshahi_temp"></td>
                   <td id="rajshahi_cloud_pct"></td>
                   <td id="rajshahi_feels_like"></td>
